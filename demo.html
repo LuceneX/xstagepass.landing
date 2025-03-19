@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Demo Application</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+    <header>
+        <h1 class="headline">Product Demo Application</h1>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/">Return</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    
+    <form  class="form-container"id="demoForm" action="https://formspree.io/f/xyzezjor" method="POST">
+        <h2 class="headline">Request a Demo</h2>
+        <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="company">Company Name *</label>
+            <input type="text" id="company" name="company" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="jobTitle">Job Title</label>
+            <input type="text" id="jobTitle" name="jobTitle">
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+        </div>
+        
+        <div class="form-group">
+            <label for="companySize">How many attendees You plan on having?</label>
+            <select id="companySize" name="companySize">
+                <option value="">Select One</option>
+                <option value="1-10">1-10 attendees</option>
+                <option value="11-50">11-50 attendees</option>
+                <option value="51-200">51-200 attendees</option>
+                <option value="201-500">201-500 attendees</option>
+                <option value="501+">501+ attendees</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="requirements">Specific Requirements or Questions</label>
+            <textarea id="requirements" name="requirements" rows="4"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="preferredDate">Preferred Demo Date</label>
+            <input type="date" id="preferredDate" name="preferredDate">
+        </div>
+        
+        <button type="submit">Submit Application</button>
+    </form>
+</body>
+</html>
