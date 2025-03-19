@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     const routes = {
-        '/': 'public/views/home.html',
-        '/login': 'public/views/login.html',
-        '/demo': 'public/views/demo.html'
+        '': 'public/views/home.html',
+        'login': 'public/views/login.html',
+        'demo': 'public/views/demo.html'
     };
 
     function navigate() {
-        const path = window.location.pathname;
+        const path = window.location.pathname.replace(/^\//, '');
         const route = routes[path] || 'public/views/404.html'; // Redirect to 404.html for invalid routes
         fetch(route)
             .then(response => {
