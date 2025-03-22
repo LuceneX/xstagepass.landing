@@ -124,6 +124,32 @@ body {
     transition: transform 0.3s ease;
 }
 
+.action a {
+    display: inline-block;
+    background: linear-gradient(to right, var(--primary), var(--gradient-end));
+    color: var(--text-light);
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(214, 69, 80, 0.4);
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.action a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(214, 69, 80, 0.6);
+}
+
+.action a:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(214, 69, 80, 0.4);
+}
+
 a {
     text-decoration: none;
     color: var(--contrast);
@@ -163,6 +189,23 @@ a:hover {
     background-clip: text;
     color: transparent;
     animation: gradient-shift 6s linear infinite;
+}
+.small-headline {
+    font-size: 2rem;
+    font-weight: 500;
+    background: linear-gradient(
+        120deg,
+        var(--contrast) 0%, 
+        var(--gradient-end) 30%, 
+        var(--primary) 60%, 
+        var(--gradient-end) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-top: 20px;
+    animation: gradient-shift 8s linear infinite;
 }
 
 @keyframes gradient-shift {
