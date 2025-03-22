@@ -16,7 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.text();
             })
             .then(html => {
-                document.getElementById('app').innerHTML = html;
+                // Parse the HTML and extract the content inside the app div
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const content = doc.querySelector('#app') ? 
+                                doc.querySelector('#app').innerHTML : 
+                                doc.body.innerHTML;
+                document.getElementById('app').innerHTML = content;
+                
+                // Re-attach event listeners to newly added links
+                attachLinkHandlers();
             })
             .catch(error => {
                 console.error('Error fetching the route:', error);
@@ -24,14 +33,26 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
+    function attachLinkHandlers() {
+        document.querySelectorAll('a').forEach(anchor => {
+            // Skip links that already have the SPA handler
+            if (anchor.getAttribute('data-spa-handled')) return;
+            
+            anchor.setAttribute('data-spa-handled', 'true');
+            anchor.addEventListener('click', function(event) {
+                const href = anchor.getAttribute('href');
+                
+                // Don't handle external links or hash links
+                if (href.includes('://') || href.startsWith('#')) return;
+                
+                event.preventDefault();
+                history.pushState(null, '', href);
+                navigate();
+            });
+        });
+    }
+
     window.onpopstate = navigate;
     navigate();
-
-    document.querySelectorAll('a').forEach(anchor => {
-        anchor.addEventListener('click', function(event) {
-            event.preventDefault();
-            history.pushState(null, '', anchor.getAttribute('href'));
-            navigate();
-        });
-    });
+    attachLinkHandlers();
 });
